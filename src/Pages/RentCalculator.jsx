@@ -12,6 +12,21 @@ const Container = styled.div`
 
 `;
 
+function getMedian(values){
+  if(values.length ===0) throw new Error("No inputs");
+
+  values.sort(function(a,b){
+    return a-b;
+  });
+
+  var half = Math.floor(values.length / 2);
+  
+  if (values.length % 2)
+    return values[half];
+  
+  return (values[half - 1] + values[half]) / 2.0;
+}
+
 export default function RentCalculator() {
   const [isMinor, setIsMinor] = useState();
   const [suggestedDonation, setSuggestedDonation] = useState({ min: 60, max: 60 });
@@ -36,36 +51,12 @@ export default function RentCalculator() {
     }));
     if (Object.keys(tierMap).length === 7) {
       const tierList = Object.values(tierMap)
-      const tierModes = getModes(tierList)
-      const maxMode = Math.max.apply(null, tierModes);
       const tierSum = tierList.reduce((total, currentValue) => total = total + currentValue, 0);
       const tierAverage = tierSum / 7
-
-      const newTier = Math.round((.25 * tierAverage) + (.75 * maxMode))
+      const median = getMedian(tierList)
+      const newTier = Math.round((.25 * tierAverage) + (.75 * median))
       setSuggestedDonation(donationTiers[newTier])
     }
-  }
-
-  function getModes(array) {
-    var frequency = []; // array of frequency.
-    var maxFreq = 0; // holds the max frequency.
-    var modes = [];
-  
-    for (var i in array) {
-      frequency[array[i]] = (frequency[array[i]] || 0) + 1; // increment frequency.
-  
-      if (frequency[array[i]] > maxFreq) { // is this frequency > max so far ?
-        maxFreq = frequency[array[i]]; // update max.
-      }
-    }
-  
-    for (var k in frequency) {
-      if (frequency[k] === maxFreq) {
-        modes.push(parseInt(k));
-      }
-    }
-  
-    return modes;
   }
 
   const minDonation = suggestedDonation['min'] !== undefined ? suggestedDonation['min']: 'No minimum'

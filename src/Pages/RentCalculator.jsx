@@ -59,6 +59,11 @@ export default function RentCalculator() {
     }
   }
 
+  const under18 = (isMinor) => {
+    setIsMinor(isMinor)
+    setSuggestedDonation(donationTiers[1])
+  }
+
   const minDonation = suggestedDonation['min'] !== undefined ? suggestedDonation['min']: 'No minimum'
   const maxDonation = suggestedDonation['max'] !== undefined ? suggestedDonation['max'] : 'No maximum'
 
@@ -72,8 +77,8 @@ export default function RentCalculator() {
       
           <h2>Back Rent Calculator</h2>
           <p>Are you under 18?</p>
-          <button onClick={() => {setIsMinor(true)}}>Yes</button>
-          <button onClick={() => {setIsMinor(false)}}>No</button>
+          <button onClick={() => {under18(true)}}>Yes</button>
+          <button onClick={() => {under18(false)}}>No</button>
           {isMinor &&
           <p>Skip the rest of the questions, see suggested donation at the bottom of the page</p>}
           {!isMinor &&

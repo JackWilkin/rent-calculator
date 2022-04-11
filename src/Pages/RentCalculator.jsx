@@ -37,7 +37,7 @@ export default function RentCalculator() {
     if (Object.keys(tierMap).length === 7) {
       const tierList = Object.values(tierMap)
       const tierModes = getModes(tierList)
-      const maxMode = Math.max(tierModes)
+      const maxMode = Math.max.apply(null, tierModes);
       const tierSum = tierList.reduce((total, currentValue) => total = total + currentValue, 0);
       const tierAverage = tierSum / 7
 
@@ -61,7 +61,7 @@ export default function RentCalculator() {
   
     for (var k in frequency) {
       if (frequency[k] === maxFreq) {
-        modes.push(k);
+        modes.push(parseInt(k));
       }
     }
   

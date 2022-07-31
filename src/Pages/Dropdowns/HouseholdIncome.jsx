@@ -7,9 +7,9 @@ export default function HouseholdIncome({ onChange }) {
         { value: 3, label: '$60,000 - $100,000' },
         { value: 4, label: '$100,000 - $150,000' },
         { value: 5, label: '$150,000 - $200,000' },
-        { value: 6, label: '$200,000 - $300,000' },
-        { value: 7, label: '$300,000 - $500,000' },
-        { value: 8, label: 'More than $500,000' },
+        { value: 7, label: '$200,000 - $300,000' },
+        { value: 9, label: '$300,000 - $500,000' },
+        { value: 11, label: 'More than $500,000' },
       ]
 
       const header = 'Household Income'

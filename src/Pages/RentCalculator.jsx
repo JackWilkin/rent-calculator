@@ -5,7 +5,6 @@ import HouseholdIncome from './Dropdowns/HouseholdIncome';
 import Housing from './Dropdowns/Housing';
 import Debt from './Dropdowns/Debt';
 import FamilyWealth from './Dropdowns/FamilyWealth';
-import Education from './Dropdowns/Education';
 import Savings from './Dropdowns/Savings';
 
 const Container = styled.div`
@@ -88,7 +87,6 @@ export default function RentCalculator() {
                 <Housing onChange={updateTier}/>
                 <Debt onChange={updateTier}/>
                 <FamilyWealth onChange={updateTier}/>
-                <Education onChange={updateTier}/>
                 <Savings onChange={updateTier}/>
             </form>
           }

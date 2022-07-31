@@ -7,9 +7,9 @@ export default function FamilyWealth({ onChange }) {
         { value: 3, label: '$50K - $100K' },
         { value: 4, label: '$100K - $500K' },
         { value: 5, label: '$500K - $2M' },
-        { value: 6, label: '$2M - $5M' },
-        { value: 7, label: '$5M - $10M' },
-        { value: 8, label: 'Over $10M' },
+        { value: 8, label: '$2M - $5M' },
+        { value: 10, label: '$5M - $10M' },
+        { value: 11, label: 'Over $10M' },
       ]
 
       const header = 'Family Wealth'

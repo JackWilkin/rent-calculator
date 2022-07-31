@@ -48,10 +48,10 @@ export default function RentCalculator() {
       ...tierMap,
       ...updatedValue
     }));
-    if (Object.keys(tierMap).length === 7) {
+    if (Object.keys(tierMap).length === 6) {
       const tierList = Object.values(tierMap)
       const tierSum = tierList.reduce((total, currentValue) => total = total + currentValue, 0);
-      const tierAverage = tierSum / 7
+      const tierAverage = tierSum / 6
       const median = getMedian(tierList)
       const newTier = Math.round((.25 * tierAverage) + (.75 * median))
       setSuggestedDonation(donationTiers[newTier])
